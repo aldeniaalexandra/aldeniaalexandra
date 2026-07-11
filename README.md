@@ -209,19 +209,6 @@ Machine Learning Application of Two-Dimensional Fracture Properties Estimation
 
 <div align="center">
 
-<h3>Contribution Graph</h3>
-
-<img 
-  src="https://ghchart.rshah.org/000000/aldeniaalexandra" 
-  alt="GitHub Contributions"
-/>
-
-</div>
-
----
-
-<div align="center">
-
 <h3>Visitor Count</h3>
 
 <img src="https://komarev.com/ghpvc/?username=aldeniaalexandra&color=000000&style=flat-square&label=Profile+Views" />
