@@ -22,7 +22,7 @@
   "scenes": [
     {
       "act": "wave",
-      "say": "hi there! i'm {name}"
+      "say": "oh, you're here"
     },
     {
       "act": "present",
