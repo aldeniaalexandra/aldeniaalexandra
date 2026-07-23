@@ -8,20 +8,7 @@
 
 ## Player
 
-```
-name  : sandra
-deal  : i make things — some useful, some just because they looked fun
-vibe  : low effort, occasionally inspired
-```
-
-Not the grind-all-night type. More the *"ooh that looks interesting"* type.
-
-```
-snacks       ██████████  max
-caffeine      █████████░  refuel soon
-motivation    ████░░░░░░  loading...
-sleep         ███░░░░░░░  wontfix
-```
+**sandra** — i make things. some useful, some just because they looked fun.
 
 ---
 
