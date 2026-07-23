@@ -5,12 +5,21 @@
       <stop offset="1" stop-color="#241a52"/>
     </linearGradient>
     <style>
-      @keyframes bob     { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+      @keyframes travel  { 0% { transform: translateX(-118px); } 100% { transform: translateX(118px); } }
+      @keyframes hop     { 0%,100% { transform: translateY(2px); } 50% { transform: translateY(-30px); } }
+      @keyframes squash  { 0% { transform: scale(1.14,.86); } 22%,78% { transform: scale(1,1); }
+                           50% { transform: scale(.9,1.12); } 100% { transform: scale(1.14,.86); } }
+      @keyframes shadow  { 0%,100% { transform: scaleX(1); opacity: .40; } 50% { transform: scaleX(.5); opacity: .14; } }
+      @keyframes wiggle  { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
       @keyframes eyesO   { 0%,92% { opacity: 1; } 93%,100% { opacity: 0; } }
       @keyframes eyesC   { 0%,92% { opacity: 0; } 93%,100% { opacity: 1; } }
       @keyframes twinkle { 0%,100% { opacity: .2; } 50% { opacity: 1; } }
       @keyframes drift   { 0%,100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
-      .bob    { animation: bob 2.2s ease-in-out infinite; }
+      .travel { animation: travel 5.5s ease-in-out infinite alternate; }
+      .hop    { animation: hop 0.62s ease-in-out infinite; }
+      .squash { animation: squash 0.62s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+      .shadow { animation: shadow 0.62s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 50%; }
+      .ears   { animation: wiggle 1.24s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
       .eyesO  { animation: eyesO 4.2s steps(1) infinite; }
       .eyesC  { animation: eyesC 4.2s steps(1) infinite; }
       .star   { animation: twinkle 2.6s ease-in-out infinite; }
@@ -68,49 +77,57 @@
   <text class="mono" x="22" y="52" font-size="11" fill="#5a4f8a">makes things for fun</text>
 
   <!-- creature -->
-  <g transform="translate(366,86) scale(1.4)">
-   <g class="bob">
-    <!-- ears -->
-    <rect x="9"  y="-12" width="6"  height="6" fill="#5f3fc0"/>
-    <rect x="6"  y="-6"  width="12" height="6" fill="#5f3fc0"/>
-    <rect x="45" y="-12" width="6"  height="6" fill="#5f3fc0"/>
-    <rect x="42" y="-6"  width="12" height="6" fill="#5f3fc0"/>
-    <!-- body silhouette -->
-    <g fill="#8a63e8">
-      <rect x="15" y="0"  width="30" height="6"/>
-      <rect x="9"  y="6"  width="42" height="6"/>
-      <rect x="3"  y="12" width="54" height="6"/>
-      <rect x="0"  y="18" width="60" height="6"/>
-      <rect x="0"  y="24" width="60" height="6"/>
-      <rect x="0"  y="30" width="60" height="6"/>
-      <rect x="3"  y="36" width="54" height="6"/>
-      <rect x="9"  y="42" width="42" height="6"/>
+  <g transform="translate(366,92) scale(1.4)">
+   <g class="travel">
+    <!-- ground shadow -->
+    <ellipse class="shadow" cx="30" cy="58" rx="27" ry="5" fill="#14103a"/>
+    <g class="hop">
+     <g class="squash">
+      <!-- ears -->
+      <g class="ears">
+        <rect x="9"  y="-12" width="6"  height="6" fill="#5f3fc0"/>
+        <rect x="6"  y="-6"  width="12" height="6" fill="#5f3fc0"/>
+        <rect x="45" y="-12" width="6"  height="6" fill="#5f3fc0"/>
+        <rect x="42" y="-6"  width="12" height="6" fill="#5f3fc0"/>
+      </g>
+      <!-- body silhouette -->
+      <g fill="#8a63e8">
+        <rect x="15" y="0"  width="30" height="6"/>
+        <rect x="9"  y="6"  width="42" height="6"/>
+        <rect x="3"  y="12" width="54" height="6"/>
+        <rect x="0"  y="18" width="60" height="6"/>
+        <rect x="0"  y="24" width="60" height="6"/>
+        <rect x="0"  y="30" width="60" height="6"/>
+        <rect x="3"  y="36" width="54" height="6"/>
+        <rect x="9"  y="42" width="42" height="6"/>
+      </g>
+      <!-- shading -->
+      <g fill="#7551d6">
+        <rect x="9"  y="42" width="42" height="6"/>
+        <rect x="3"  y="36" width="6"  height="6"/>
+        <rect x="51" y="36" width="6"  height="6"/>
+      </g>
+      <!-- highlight -->
+      <rect x="9" y="6" width="12" height="6" fill="#a888f2"/>
+      <!-- feet -->
+      <rect x="12" y="48" width="12" height="6" fill="#5f3fc0"/>
+      <rect x="36" y="48" width="12" height="6" fill="#5f3fc0"/>
+      <!-- eyes open -->
+      <g class="eyesO" fill="#14103a">
+        <rect x="15" y="18" width="6" height="12"/>
+        <rect x="39" y="18" width="6" height="12"/>
+        <rect x="15" y="18" width="3" height="3" fill="#c9bcff"/>
+        <rect x="39" y="18" width="3" height="3" fill="#c9bcff"/>
+      </g>
+      <!-- eyes closed (blink) -->
+      <g class="eyesC" fill="#14103a">
+        <rect x="15" y="24" width="6" height="3"/>
+        <rect x="39" y="24" width="6" height="3"/>
+      </g>
+      <!-- mouth -->
+      <rect x="24" y="36" width="12" height="5" fill="#ffffff"/>
+     </g>
     </g>
-    <!-- shading -->
-    <g fill="#7551d6">
-      <rect x="9"  y="42" width="42" height="6"/>
-      <rect x="3"  y="36" width="6"  height="6"/>
-      <rect x="51" y="36" width="6"  height="6"/>
-    </g>
-    <!-- highlight -->
-    <rect x="9" y="6" width="12" height="6" fill="#a888f2"/>
-    <!-- feet -->
-    <rect x="12" y="48" width="12" height="6" fill="#5f3fc0"/>
-    <rect x="36" y="48" width="12" height="6" fill="#5f3fc0"/>
-    <!-- eyes open -->
-    <g class="eyesO" fill="#14103a">
-      <rect x="15" y="18" width="6" height="12"/>
-      <rect x="39" y="18" width="6" height="12"/>
-      <rect x="15" y="18" width="3" height="3" fill="#c9bcff"/>
-      <rect x="39" y="18" width="3" height="3" fill="#c9bcff"/>
-    </g>
-    <!-- eyes closed (blink) -->
-    <g class="eyesC" fill="#14103a">
-      <rect x="15" y="24" width="6" height="3"/>
-      <rect x="39" y="24" width="6" height="3"/>
-    </g>
-    <!-- mouth -->
-    <rect x="24" y="36" width="12" height="5" fill="#ffffff"/>
    </g>
   </g>
 </svg>
