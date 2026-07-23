@@ -4,40 +4,28 @@
 
 </div>
 
-<div align="center">
-
-`a lifelong learner`&nbsp;&nbsp;`·`&nbsp;&nbsp;`i build to learn`&nbsp;&nbsp;`·`&nbsp;&nbsp;`forever leveling up`
-
-</div>
-
 ---
 
 ## Player
 
 ```
-name    : Sandra
-class   : curious human — multiclass, no fixed build
-quest   : turn scattered data and wild ideas into things that work
-status  : online, exploring, occasionally debugging at 2am
+name  : sandra
+deal  : i make things — some useful, some just because they looked fun
+vibe  : low effort, occasionally inspired
 ```
 
-I'd rather not box myself into one label. I just like figuring things out —
-poking at data, training a model to see what happens, shipping something small,
-breaking it, and learning why. This page is my save file.
+Not the grind-all-night type. More the *"ooh that looks interesting"* type.
 
 ```
-curiosity     ██████████  max
-persistence   █████████░  it compiles eventually
-caffeine      ████████░░  refill in progress
-bug-slaying   ███████░░░  still farming xp
-sleep         ████░░░░░░  known issue, wontfix
+snacks       ██████████  max
+caffeine      █████████░  refuel soon
+motivation    ████░░░░░░  loading...
+sleep         ███░░░░░░░  wontfix
 ```
 
 ---
 
 ## Inventory
-
-Tools I've picked up along the way — still collecting.
 
 ![Python](https://img.shields.io/badge/Python-2b2d42?style=flat-square&logo=python&logoColor=ffd43b)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2b2d42?style=flat-square&logo=tensorflow&logoColor=ff6f00)
@@ -49,13 +37,11 @@ Tools I've picked up along the way — still collecting.
 ![GCP](https://img.shields.io/badge/Google_Cloud-2b2d42?style=flat-square&logo=googlecloud&logoColor=4285f4)
 ![Firebase](https://img.shields.io/badge/Firebase-2b2d42?style=flat-square&logo=firebase&logoColor=ffca28)
 
-Currently grinding a new skill tree: cloud computing.
-
 ---
 
 ## Quest Log
 
-Side quests I've taken on because they seemed fun — full write-ups live in each repo.
+Stuff I built when the mood hit — details live in each repo.
 
 - **[Cognitus AI](https://github.com/aldeniaalexandra/data-analysis-chatbot)** — a chatbot that reads your CSV and talks back
 - **[RAG Resume Screener](https://github.com/aldeniaalexandra/rag-resume-screener)** — retrieval-augmented résumé ranking
@@ -66,10 +52,8 @@ Side quests I've taken on because they seemed fun — full write-ups live in eac
 
 ## Trophy Cabinet
 
-A few things that unlocked along the way — mostly from a past life poking at rocks, fractures, and physics with ML.
-
 <details>
-<summary><b>open the trophy cabinet</b></summary>
+<summary><b>a few things from a past life poking at rocks and physics with ML</b></summary>
 
 <br/>
 
@@ -90,20 +74,12 @@ A few things that unlocked along the way — mostly from a past life poking at r
 
 ## Party Up
 
-Wanna team up, or just say hi? Pick a portal.
-
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-2b2d42?style=flat-square&logo=linkedin&logoColor=0a66c2)](https://www.linkedin.com/in/aldeniaalexandra)
 [![GitHub](https://img.shields.io/badge/GitHub-2b2d42?style=flat-square&logo=github&logoColor=ffffff)](https://github.com/aldeniaalexandra)
 [![Email](https://img.shields.io/badge/Email-2b2d42?style=flat-square&logo=gmail&logoColor=ea4335)](mailto:aldnalexandr@gmail.com)
 
----
+<br/>
 
 <div align="center">
-
-<sub>`continue?`&nbsp;&nbsp;thanks for stopping by my save file</sub>
-
-<br/><br/>
-
 <img src="https://komarev.com/ghpvc/?username=aldeniaalexandra&color=8a63e8&style=flat-square&label=players+met" />
-
 </div>
