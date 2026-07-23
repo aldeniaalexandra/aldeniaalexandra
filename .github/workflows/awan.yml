@@ -9,10 +9,12 @@ on:
 
 jobs:
   awan:
-    uses: codewithwan/awan/.github/workflows/profile.yml@v0
+    uses: aldeniaalexandra/awan/.github/workflows/profile.yml@main
     permissions:
       contents: write
     with:
       brag_over: 100
       brag_say: "i'm so excited!"
       cope_say: "...i'll fix that, promise"
+      weather_lat: "-6.2088"
+      weather_lon: "106.8456"
