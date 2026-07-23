@@ -2,6 +2,8 @@
 
 ![awan](assets/awan.gif)
 
+![jakarta sky](assets/skyline.svg)
+
 </div>
 
 i make things. some useful, some just because they looked fun.
