@@ -4,8 +4,6 @@
 
 </div>
 
-# sandra
-
 i make things. some useful, some just because they looked fun.
 
 ---
