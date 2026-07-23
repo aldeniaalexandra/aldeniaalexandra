@@ -1,0 +1,36 @@
+{
+  "username": "aldeniaalexandra",
+  "name": "sandra",
+  "role": "makes things for fun",
+  "location": "indonesia",
+  "stack": "",
+  "song": "",
+  "artist": "",
+  "lyrics": [],
+  "character": "characters/mine.toml",
+  "streak": 0,
+  "stats": [],
+  "contributions": "",
+  "contrib_year": 0,
+  "contrib_recent": 0,
+  "output": "assets/awan.gif",
+  "scenes": [
+    {
+      "act": "wave",
+      "say": "hi there! i'm {name}"
+    },
+    {
+      "act": "present",
+      "say": "{role}"
+    },
+    {
+      "act": "contributions",
+      "say": "i'm very happy, {contrib_year} this year",
+      "then": "and {contrib_recent} in the last 30 days"
+    },
+    {
+      "act": "sleep",
+      "say": "okay... nap time, zzz"
+    }
+  ]
+}

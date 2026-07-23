@@ -1,0 +1,48 @@
+spec_version = 1
+
+[character]
+name = "Ubi"
+author = "aldeniaalexandra"
+description = "A little purple blob — naps a lot, ships sometimes."
+
+[character.palette]
+body = "#8A63E8" # soft purple (138,99,232)
+eye  = "#14103A" # deep night (20,16,58)
+
+[sprite]
+rows = [
+    " #+    +# ",
+    "+########+",
+    "##@@##@@##",
+    "####--####",
+    "+########+",
+    " ##    ## ",
+]
+sit_rows = [
+    "          ",
+    " #+    +# ",
+    "+########+",
+    "##@@##@@##",
+    "####--####",
+    "+########+",
+]
+leg_frames = [
+    " ##    ## ",
+    "##      ##",
+    " ##    ## ",
+    "  ##  ##  ",
+]
+shimmer_row = " #+    ## " # ear twitch
+eye_row = 2
+mouth_row = 3
+legs_row = 5
+
+[personality]
+blink_rate = 0.9
+walk_speed = 1.0
+chaos = 0.4
+
+[reactions]
+"cmd.failed" = "charred"
+"task.done" = "celebrate"
+"idle" = "sleep"

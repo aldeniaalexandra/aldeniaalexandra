@@ -1,14 +1,12 @@
 <div align="center">
 
-<img src="./assets/title-screen.svg" alt="pixel scene" width="100%" />
+![awan](assets/awan.gif)
 
 </div>
 
----
+# hi, i'm sandra
 
-## Player
-
-**sandra** — i make things. some useful, some just because they looked fun.
+i make things. some useful, some just because they looked fun.
 
 ---
 
