@@ -34,7 +34,7 @@
       "then": "and {contrib_recent} in the last 30 days"
     },
     {
-      "act": "sleep",
+      "act": "{daynight}",
       "say": "okay... nap time, zzz"
     }
   ],

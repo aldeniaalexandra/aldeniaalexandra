@@ -18,3 +18,5 @@ jobs:
       cope_say: "...i'll fix that, promise"
       weather_lat: "-6.2088"
       weather_lon: "106.8456"
+      day_say: "back at it"
+      night_say: "okay... nap time, zzz"
