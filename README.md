@@ -1,216 +1,116 @@
 <div align="center">
 
----
+<img src="./assets/title-screen.svg" alt="Aldenia's Quest" width="100%" />
 
-<h2>Aldenia Alexandra</h2>
-<p><i>Data Scientist | ML Engineer | AI Engineer</i></p>
+</div>
 
-<p>
-Turning data into scalable intelligent systems
-</p>
+<div align="center">
+
+`> a lifelong learner`&nbsp;&nbsp;`> i build to learn`&nbsp;&nbsp;`> forever leveling up`
 
 </div>
 
 ---
 
-<div align="center">
+## 🎮 PLAYER 1
 
-<h3>About me</h3>
+```
+NAME     : Aldenia Alexandra
+CLASS    : Curious Human (multiclass, no fixed build)
+QUEST    : turn scattered data + wild ideas into things that actually work
+STATUS   : online, exploring, occasionally debugging at 2AM
+```
 
-Building AI solutions from data exploration to intelligent systems.  
-Currently learning cloud computing and expanding across machine learning & AI.
+I don't like boxing myself into one label. I just really like *figuring things out* —
+poking at data, training a model to see what happens, shipping something small,
+breaking it, and learning why. This page is my save file.
 
-Interested in data science, machine learning, computer vision, and practical AI applications.
-
-</div>
+```text
+CURIOSITY    ██████████  MAX
+PERSISTENCE  █████████░  it compiles eventually
+CAFFEINE     ████████░░  refill in progress
+BUG-SLAYING  ███████░░░  still farming XP
+SLEEP        ████░░░░░░  known issue, wontfix
+```
 
 ---
 
-<div align="center">
+## 🎒 INVENTORY
 
-<h3>Tech Stack</h3>
+*Tools I've picked up along the way — still collecting.*
 
-<p>
+![Python](https://img.shields.io/badge/Python-2b2d42?style=flat-square&logo=python&logoColor=ffd43b)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2b2d42?style=flat-square&logo=tensorflow&logoColor=ff6f00)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-2b2d42?style=flat-square&logo=scikitlearn&logoColor=f89939)
+![Pandas](https://img.shields.io/badge/Pandas-2b2d42?style=flat-square&logo=pandas&logoColor=ffffff)
+![NumPy](https://img.shields.io/badge/NumPy-2b2d42?style=flat-square&logo=numpy&logoColor=4dabcf)
 
-![Python](https://img.shields.io/badge/PYTHON-000000?style=flat&logo=python&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TENSORFLOW-000000?style=flat&logo=tensorflow&logoColor=white)
-![Scikit-Learn](https://img.shields.io/badge/SCIKIT--LEARN-000000?style=flat&logo=scikitlearn&logoColor=white)
-![Pandas](https://img.shields.io/badge/PANDAS-000000?style=flat&logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NUMPY-000000?style=flat&logo=numpy&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-2b2d42?style=flat-square&logo=fastapi&logoColor=05998b)
+![Docker](https://img.shields.io/badge/Docker-2b2d42?style=flat-square&logo=docker&logoColor=2496ed)
+![GCP](https://img.shields.io/badge/Google_Cloud-2b2d42?style=flat-square&logo=googlecloud&logoColor=4285f4)
+![Firebase](https://img.shields.io/badge/Firebase-2b2d42?style=flat-square&logo=firebase&logoColor=ffca28)
+
+> 🧪 *Currently grinding a new skill tree: cloud computing.*
+
+---
+
+## 🗺️ QUEST LOG
+
+*Side quests I've taken on because they seemed fun.*
+
+| | Quest | What it's about |
+|:--:|:--|:--|
+| 🤖 | **[Cognitus AI](https://github.com/aldeniaalexandra/data-analysis-chatbot)** | A chatbot you can just *talk* to about your CSV — it writes the Python, runs the analysis, and hands back charts + insights. |
+| 📄 | **[RAG Resume Screener](https://github.com/aldeniaalexandra/rag-resume-screener)** | Uses Retrieval-Augmented Generation to read résumés and rank candidates against a job description. |
+| 🍅 | **[Tomato Leaf Disease Detection](https://github.com/aldeniaalexandra/tomato-leaf-disease)** | Snap a photo of a leaf, get a diagnosis — a small EfficientNetB0 web app for plant diseases. |
+| 📉 | **[Telco Customer Churn](https://github.com/aldeniaalexandra/customer-churn-prediction)** | Predicts who's about to leave and *why*, so the "why" is actually useful. |
+
+---
+
+## 🏆 TROPHY CABINET
+
+*A few achievements that unlocked along the way — mostly from a past life poking at rocks, fractures, and physics with ML.*
+
+<details>
+<summary><b>▶ open the trophy cabinet</b></summary>
 
 <br/>
 
-![FastAPI](https://img.shields.io/badge/FASTAPI-000000?style=flat&logo=fastapi&logoColor=white)
-![Docker](https://img.shields.io/badge/DOCKER-000000?style=flat&logo=docker&logoColor=white)
-![GCP](https://img.shields.io/badge/GCP-000000?style=flat&logo=googlecloud&logoColor=white)
-![Firebase](https://img.shields.io/badge/FIREBASE-000000?style=flat&logo=firebase&logoColor=white)
+| Year | 🎖️ | Title | Where |
+|:--:|:--|:--|:--|
+| 2024 | 📜 | [Machine Learning for Physical Parameters of 3D Fractures](https://doi.org/10.3390/app142412037) | Applied Sciences · Q1 (MDPI) |
+| 2024 | 📜 | [2D Physical Parameters of Digital Rocks via Deep Learning](https://doi.org/10.1088/1402-4896/ad9d08) | Physica Scripta · Q1 (IOP) |
+| 2024 | 📜 | [Lattice Boltzmann + Image Processing for Digital Rock](https://doi.org/10.3390/app14177509) | Applied Sciences · Q1 (MDPI) |
+| 2023 | 📜 | [ML for 2D Fracture Properties Estimation](https://doi.org/10.25299/jgeet.2023.8.02-2.13874) | JGEET · Sinta 2 |
+| 2024 | 🧾 | **RophysiX** | Patent · EC00202479885 |
+| 2024 | 🧾 | **Petra** | Patent · EC00202462911 |
+| 2024 | 🧾 | **SiFrac-ML** | Patent · EC00202462898 |
+| 2022 | 🧾 | **NeoFract** | Patent · EC002022116119 |
 
-</p>
+</details>
 
-</div>
+---
+
+## 🕹️ PARTY UP
+
+*Wanna team up, or just say hi? Pick a portal.*
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-2b2d42?style=flat-square&logo=linkedin&logoColor=0a66c2)](https://www.linkedin.com/in/aldeniaalexandra)
+[![GitHub](https://img.shields.io/badge/GitHub-2b2d42?style=flat-square&logo=github&logoColor=ffffff)](https://github.com/aldeniaalexandra)
+[![Email](https://img.shields.io/badge/Email-2b2d42?style=flat-square&logo=gmail&logoColor=ea4335)](mailto:aldnalexandr@gmail.com)
 
 ---
 
 <div align="center">
 
-<h3>Featured Projects</h3>
+<sub>
 
-<table>
-<tr>
-<th>Project</th>
-<th>Description</th>
-</tr>
+`CONTINUE?` &nbsp; ▓▒░ thanks for stopping by my save file ░▒▓
 
-<tr>
-<td>
-<a href="https://github.com/aldeniaalexandra/data-analysis-chatbot"><b>Cognitus AI</b></a><br/>
-Data Analysis Chatbot
-</td>
-<td align="left">
-AI-powered chatbot for analyzing CSV datasets using natural language.  
-Generates Python code and delivers insights with interactive visualizations.
-</td>
-</tr>
+</sub>
 
-<tr>
-<td>
-<a href="https://github.com/aldeniaalexandra/rag-resume-screener"><b>RAG Resume Screener</b></a>
-</td>
-<td align="left">
-AI-based resume screening system using Retrieval-Augmented Generation (RAG) to evaluate and rank candidates against job descriptions.
-</td>
-</tr>
+<br/>
 
-<tr>
-<td>
-<a href="https://github.com/aldeniaalexandra/tomato-leaf-disease"><b>Tomato Leaf Disease Detection</b></a>
-</td>
-<td align="left">
-Deep learning web application for classifying plant diseases from images using EfficientNetB0.
-</td>
-</tr>
-
-<tr>
-<td>
-<a href="https://github.com/aldeniaalexandra/customer-churn-prediction"><b>Telco Customer Churn Prediction</b></a>
-</td>
-<td align="left">
-Machine learning model for predicting customer churn and identifying key business drivers.
-</td>
-</tr>
-
-</table>
-
-</div>
-
----
-
-<div align="center">
-
-<h3>Publications & Patents</h3>
-
-<table>
-<tr>
-<th>Year</th>
-<th>Type</th>
-<th>Title</th>
-<th>Source / ID</th>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>Publication</td>
-<td align="left">
-<a href="https://doi.org/10.3390/app142412037">
-Application of Machine Learning for Estimating the Physical Parameters of Three-Dimensional Fractures
-</a>
-</td>
-<td>Applied Sciences (Q1 MDPI)</td>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>Publication</td>
-<td align="left">
-<a href="https://doi.org/10.1088/1402-4896/ad9d08">
-Estimating Two-Dimensional Physical Parameters of Digital Rocks Using Deep Learning
-</a>
-</td>
-<td>Physica Scripta (Q1 IOP)</td>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>Publication</td>
-<td align="left">
-<a href="https://doi.org/10.3390/app14177509">
-Lattice Boltzmann Method and Image Processing Techniques for Effective Parameter Estimation of Digital Rock
-</a>
-</td>
-<td>Applied Sciences (Q1 MDPI)</td>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>Patent</td>
-<td align="left">RophysiX</td>
-<td>Patent ID: EC00202479885</td>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>Patent</td>
-<td align="left">Petra</td>
-<td>Patent ID: EC00202462911</td>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>Patent</td>
-<td align="left">SiFrac-ML</td>
-<td>Patent ID: EC00202462898</td>
-</tr>
-
-<tr>
-<td>2023</td>
-<td>Publication</td>
-<td align="left">
-<a href="https://doi.org/10.25299/jgeet.2023.8.02-2.13874">
-Machine Learning Application of Two-Dimensional Fracture Properties Estimation
-</a>
-</td>
-<td>JGEET (Sinta 2)</td>
-</tr>
-
-<tr>
-<td>2022</td>
-<td>Patent</td>
-<td align="left">NeoFract</td>
-<td>Patent ID: EC002022116119</td>
-</tr>
-
-</table>
-
-</div>
-
----
-
-<div align="center">
-
-<h3>Connect with me</h3>
-
-[![LinkedIn](https://img.shields.io/badge/LINKEDIN-000000?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/aldeniaalexandra)
-[![GitHub](https://img.shields.io/badge/GITHUB-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/aldeniaalexandra)
-[![Email](https://img.shields.io/badge/EMAIL-000000?style=for-the-badge&logo=gmail&logoColor=white)](mailto:aldnalexandr@gmail.com)
-
-</div>
-
----
-
-<div align="center">
-
-<h3>Visitor Count</h3>
-
-<img src="https://komarev.com/ghpvc/?username=aldeniaalexandra&color=000000&style=flat-square&label=Profile+Views" />
+<img src="https://komarev.com/ghpvc/?username=aldeniaalexandra&color=1f6feb&style=flat-square&label=PLAYERS+MET" />
 
 </div>
