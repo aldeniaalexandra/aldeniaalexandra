@@ -197,10 +197,10 @@ Require one-character palette symbols, identical 12-by-8 frames, transparent spa
 Use a purple yam-like 12-by-8 silhouette with an off-center two-pixel sprout, one-pixel eyes, no drawn mouth, a shaded base, and these four leg rows:
 
 ```text
-   PP   PP  
-  PP     PP 
-    PP PP   
-    PP  PP  
+"   PP   PP  "
+"  PP     PP "
+"    PP PP   "
+"    PP  PP  "
 ```
 
 The pack palette uses `P=#8A63E8`, `H=#BFAAFF`, `S=#6845C6`, and `E=#171225`. Blink replaces the two eye pixels with shadow pixels.
