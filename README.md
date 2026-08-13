@@ -84,7 +84,7 @@ The example tracks `main` while Ube is in early development. Pin a release tag o
 }
 ```
 
-Paths are resolved from the config file. Invalid colors, dimensions, frame counts, and unknown keys fail with a message that points to the exact field.
+Paths are resolved from the config file. Canvas sizes from 320 × 160 through 1600 × 800 are supported; the contribution grid scales down cleanly on narrower banners. Invalid colors, dimensions, frame counts, and unknown keys fail with a message that points to the config file and exact field.
 
 ## Draw a different resident
 

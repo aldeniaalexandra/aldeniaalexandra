@@ -10,6 +10,7 @@ const GRID_COLUMNS = 53;
 const GRID_ROWS = 7;
 const GRID_CELL_SIZE = 10;
 const GRID_CELL_GAP = 5;
+const GRID_MINIMUM_GAP = 1;
 const GRID_BOTTOM_MARGIN = 18;
 const CHARACTER_GRAPH_GAP = 8;
 const CHARACTER_STRIDE_CELLS = 3;
@@ -91,10 +92,11 @@ export function createScene(
 }
 
 function createLayout(width: number, height: number): SceneLayout {
+  const { cellSize, cellGap } = fitGridToWidth(width);
   const gridWidth =
-    GRID_COLUMNS * GRID_CELL_SIZE + (GRID_COLUMNS - 1) * GRID_CELL_GAP;
+    GRID_COLUMNS * cellSize + (GRID_COLUMNS - 1) * cellGap;
   const gridHeight =
-    GRID_ROWS * GRID_CELL_SIZE + (GRID_ROWS - 1) * GRID_CELL_GAP;
+    GRID_ROWS * cellSize + (GRID_ROWS - 1) * cellGap;
   const gridLeft = Math.floor((width - gridWidth) / 2);
   const gridTop = height - GRID_BOTTOM_MARGIN - gridHeight;
   if (gridLeft < 0 || gridTop < 0) {
@@ -104,12 +106,27 @@ function createLayout(width: number, height: number): SceneLayout {
   return Object.freeze({
     gridLeft,
     gridTop,
-    cellSize: GRID_CELL_SIZE,
-    cellGap: GRID_CELL_GAP,
+    cellSize,
+    cellGap,
     columns: GRID_COLUMNS,
     rows: GRID_ROWS,
     baselineY: gridTop - CHARACTER_GRAPH_GAP,
   });
+}
+
+function fitGridToWidth(width: number): { cellSize: number; cellGap: number } {
+  for (let cellSize = GRID_CELL_SIZE; cellSize >= 1; cellSize -= 1) {
+    const availableGap = Math.floor(
+      (width - GRID_COLUMNS * cellSize) / (GRID_COLUMNS - 1),
+    );
+    if (availableGap >= GRID_MINIMUM_GAP) {
+      return {
+        cellSize,
+        cellGap: Math.min(GRID_CELL_GAP, availableGap),
+      };
+    }
+  }
+  throw new RangeError("canvas is too narrow for the contribution scene");
 }
 
 function createPalette(

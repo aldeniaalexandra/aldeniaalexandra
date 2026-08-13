@@ -842,8 +842,6 @@ var require_gifenc = __commonJS({
 
 // src/action.ts
 import { appendFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
-import { resolve as resolve4 } from "node:path";
 
 // src/generate.ts
 import { readFile as readFile3 } from "node:fs/promises";
@@ -1115,7 +1113,8 @@ function requireNumberInRange(value, path, minimum, maximum) {
 async function loadConfig(path) {
   const configPath = resolve2(path);
   const raw = await readFile2(configPath, "utf8");
-  const config = validateConfig(parseJson2(raw, configPath));
+  const parsed = parseJson2(raw, configPath);
+  const config = validateConfigWithPath(parsed, configPath);
   const configDirectory = dirname(configPath);
   return {
     ...config,
@@ -1123,6 +1122,16 @@ async function loadConfig(path) {
     characterPath: resolve2(configDirectory, config.character),
     outputPath: resolve2(configDirectory, config.output.path)
   };
+}
+function validateConfigWithPath(value, path) {
+  try {
+    return validateConfig(value);
+  } catch (error) {
+    if (error instanceof ConfigError) {
+      throw new ConfigError(`${path}: ${error.message}`);
+    }
+    throw error;
+  }
 }
 function parseJson2(raw, path) {
   try {
@@ -1380,9 +1389,11 @@ function formatDate(timestamp) {
 
 // src/output/gif.ts
 var import_gifenc = __toESM(require_gifenc(), 1);
+import { randomUUID } from "node:crypto";
 import { mkdir, rename, rm, writeFile } from "node:fs/promises";
-import { dirname as dirname2 } from "node:path";
+import { basename, dirname as dirname2, join } from "node:path";
 var GIF_MINIMUM_DELAY_MS = 10;
+var pendingWrites = /* @__PURE__ */ new Map();
 function encodeGif(frames, delayMs) {
   if (frames.length === 0) {
     throw new Error("cannot encode a GIF without frames");
@@ -1408,8 +1419,24 @@ function encodeGif(frames, delayMs) {
   return new Uint8Array(encoder.bytes());
 }
 async function writeGifAtomic(outputPath, bytes) {
-  const temporaryPath = `${outputPath}.tmp`;
-  await mkdir(dirname2(outputPath), { recursive: true });
+  const previousWrite = pendingWrites.get(outputPath) ?? Promise.resolve();
+  const currentWrite = previousWrite.catch(() => void 0).then(() => writeGifAtomicNow(outputPath, bytes));
+  pendingWrites.set(outputPath, currentWrite);
+  try {
+    await currentWrite;
+  } finally {
+    if (pendingWrites.get(outputPath) === currentWrite) {
+      pendingWrites.delete(outputPath);
+    }
+  }
+}
+async function writeGifAtomicNow(outputPath, bytes) {
+  const outputDirectory = dirname2(outputPath);
+  const temporaryPath = join(
+    outputDirectory,
+    `.${basename(outputPath)}.${process.pid}.${randomUUID()}.tmp`
+  );
+  await mkdir(outputDirectory, { recursive: true });
   try {
     await writeFile(temporaryPath, bytes);
     await rename(temporaryPath, outputPath);
@@ -1656,6 +1683,7 @@ var GRID_COLUMNS = 53;
 var GRID_ROWS = 7;
 var GRID_CELL_SIZE = 10;
 var GRID_CELL_GAP = 5;
+var GRID_MINIMUM_GAP = 1;
 var GRID_BOTTOM_MARGIN = 18;
 var CHARACTER_GRAPH_GAP = 8;
 var CHARACTER_STRIDE_CELLS = 3;
@@ -1707,8 +1735,9 @@ function createScene(config, character) {
   });
 }
 function createLayout(width, height) {
-  const gridWidth = GRID_COLUMNS * GRID_CELL_SIZE + (GRID_COLUMNS - 1) * GRID_CELL_GAP;
-  const gridHeight = GRID_ROWS * GRID_CELL_SIZE + (GRID_ROWS - 1) * GRID_CELL_GAP;
+  const { cellSize, cellGap } = fitGridToWidth(width);
+  const gridWidth = GRID_COLUMNS * cellSize + (GRID_COLUMNS - 1) * cellGap;
+  const gridHeight = GRID_ROWS * cellSize + (GRID_ROWS - 1) * cellGap;
   const gridLeft = Math.floor((width - gridWidth) / 2);
   const gridTop = height - GRID_BOTTOM_MARGIN - gridHeight;
   if (gridLeft < 0 || gridTop < 0) {
@@ -1717,12 +1746,26 @@ function createLayout(width, height) {
   return Object.freeze({
     gridLeft,
     gridTop,
-    cellSize: GRID_CELL_SIZE,
-    cellGap: GRID_CELL_GAP,
+    cellSize,
+    cellGap,
     columns: GRID_COLUMNS,
     rows: GRID_ROWS,
     baselineY: gridTop - CHARACTER_GRAPH_GAP
   });
+}
+function fitGridToWidth(width) {
+  for (let cellSize = GRID_CELL_SIZE; cellSize >= 1; cellSize -= 1) {
+    const availableGap = Math.floor(
+      (width - GRID_COLUMNS * cellSize) / (GRID_COLUMNS - 1)
+    );
+    if (availableGap >= GRID_MINIMUM_GAP) {
+      return {
+        cellSize,
+        cellGap: Math.min(GRID_CELL_GAP, availableGap)
+      };
+    }
+  }
+  throw new RangeError("canvas is too narrow for the contribution scene");
 }
 function createPalette(config, character) {
   const palette = new Palette(config.theme.background);
@@ -1913,8 +1956,7 @@ async function runAction(runtime = DEFAULT_RUNTIME) {
     });
     await runtime.appendOutput(
       githubOutput,
-      `path=${escapeEnvironmentValue(result.path)}
-`
+      formatEnvironmentOutput("path", result.path)
     );
     return 0;
   } catch (error) {
@@ -1926,17 +1968,24 @@ async function runAction(runtime = DEFAULT_RUNTIME) {
 function readInput(env, name) {
   return env[name]?.trim() ?? "";
 }
-function escapeEnvironmentValue(value) {
+function escapeWorkflowData(value) {
   return value.replaceAll("%", "%25").replaceAll("\r", "%0D").replaceAll("\n", "%0A");
 }
 function escapeWorkflowCommand(value) {
-  return escapeEnvironmentValue(value).replaceAll(":", "%3A").replaceAll(",", "%2C");
+  return escapeWorkflowData(value).replaceAll(":", "%3A").replaceAll(",", "%2C");
 }
-var entryPath = process.argv[1];
-if (entryPath !== void 0 && import.meta.url === pathToFileURL(resolve4(entryPath)).href) {
-  process.exitCode = await runAction();
+function formatEnvironmentOutput(name, value) {
+  const valueLines = value.split(/\r\n|\r|\n/);
+  let delimiter = "UBE_OUTPUT_PATH";
+  while (valueLines.includes(delimiter)) {
+    delimiter += "_";
+  }
+  return `${name}<<${delimiter}
+${value}
+${delimiter}
+`;
 }
-export {
-  runAction
-};
+
+// src/action-entry.ts
+process.exitCode = await runAction();
 //# sourceMappingURL=action.js.map

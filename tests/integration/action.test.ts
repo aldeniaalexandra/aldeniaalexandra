@@ -20,7 +20,7 @@ describe("runAction", () => {
     const directory = await mkdtemp(join(tmpdir(), "ube-action-"));
     temporaryDirectories.push(directory);
     const githubOutput = join(directory, "github-output.txt");
-    const generatedPath = join(directory, "assets", "ube.gif");
+    const generatedPath = join(directory, "assets", "100%-ube.gif");
     const generateImpl = async (_options: GenerateOptions): Promise<GenerateResult> => ({
       path: generatedPath,
       frames: 120,
@@ -42,7 +42,7 @@ describe("runAction", () => {
 
     expect(exitCode).toBe(0);
     expect(await readFile(githubOutput, "utf8")).toBe(
-      `path=${generatedPath}\n`,
+      `path<<UBE_OUTPUT_PATH\n${generatedPath}\nUBE_OUTPUT_PATH\n`,
     );
   });
 

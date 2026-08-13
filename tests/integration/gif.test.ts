@@ -1,8 +1,9 @@
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, readdir, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { generate } from "../../src/generate.js";
+import { writeGifAtomic } from "../../src/output/gif.js";
 
 const temporaryDirectories: string[] = [];
 
@@ -40,6 +41,24 @@ describe("generate", () => {
       height: 320,
     });
   }, 30_000);
+
+  it("keeps concurrent atomic writes isolated", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "ube-atomic-gif-"));
+    temporaryDirectories.push(directory);
+    const outputPath = join(directory, "ube.gif");
+    const candidates = Array.from(
+      { length: 8 },
+      (_, index) => new Uint8Array(4096).fill(index),
+    );
+
+    await Promise.all(
+      candidates.map((bytes) => writeGifAtomic(outputPath, bytes)),
+    );
+
+    const output = await readFile(outputPath);
+    expect(candidates.some((bytes) => output.equals(bytes))).toBe(true);
+    expect(await readdir(directory)).toEqual(["ube.gif"]);
+  });
 });
 
 function readLogicalScreen(bytes: Buffer): { width: number; height: number } {

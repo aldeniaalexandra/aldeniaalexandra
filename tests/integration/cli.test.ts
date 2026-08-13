@@ -1,10 +1,13 @@
-import { mkdtemp, rm } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { mkdtemp, rm, symlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
+import { promisify } from "node:util";
 import { afterEach, describe, expect, it } from "vitest";
 import { runCli } from "../../src/cli.js";
 
 const temporaryDirectories: string[] = [];
+const execFileAsync = promisify(execFile);
 
 afterEach(async () => {
   await Promise.all(
@@ -62,5 +65,26 @@ describe("runCli", () => {
     expect(errors).toEqual([
       "GITHUB_TOKEN is required unless --fixture is used",
     ]);
+  });
+
+  it("runs the bundled CLI when npm-style linking changes its entry path", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "ube-linked-cli-"));
+    temporaryDirectories.push(directory);
+    const linkedDist = join(directory, "dist");
+    await symlink(
+      resolve("dist"),
+      linkedDist,
+      process.platform === "win32" ? "junction" : "dir",
+    );
+
+    const { stdout, stderr } = await execFileAsync(process.execPath, [
+      join(linkedDist, "cli.js"),
+      "validate",
+      "--config",
+      resolve("ube.config.json"),
+    ]);
+
+    expect(stdout.trim()).toContain("Valid Ube config for Ube:");
+    expect(stderr).toBe("");
   });
 });

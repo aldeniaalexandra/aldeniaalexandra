@@ -1,6 +1,4 @@
 import { appendFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
-import { resolve } from "node:path";
 import {
   generate,
   type GenerateOptions,
@@ -40,7 +38,7 @@ export async function runAction(
     });
     await runtime.appendOutput(
       githubOutput,
-      `path=${escapeEnvironmentValue(result.path)}\n`,
+      formatEnvironmentOutput("path", result.path),
     );
     return 0;
   } catch (error) {
@@ -54,15 +52,19 @@ function readInput(env: NodeJS.ProcessEnv, name: string): string {
   return env[name]?.trim() ?? "";
 }
 
-function escapeEnvironmentValue(value: string): string {
+function escapeWorkflowData(value: string): string {
   return value.replaceAll("%", "%25").replaceAll("\r", "%0D").replaceAll("\n", "%0A");
 }
 
 function escapeWorkflowCommand(value: string): string {
-  return escapeEnvironmentValue(value).replaceAll(":", "%3A").replaceAll(",", "%2C");
+  return escapeWorkflowData(value).replaceAll(":", "%3A").replaceAll(",", "%2C");
 }
 
-const entryPath = process.argv[1];
-if (entryPath !== undefined && import.meta.url === pathToFileURL(resolve(entryPath)).href) {
-  process.exitCode = await runAction();
+function formatEnvironmentOutput(name: string, value: string): string {
+  const valueLines = value.split(/\r\n|\r|\n/);
+  let delimiter = "UBE_OUTPUT_PATH";
+  while (valueLines.includes(delimiter)) {
+    delimiter += "_";
+  }
+  return `${name}<<${delimiter}\n${value}\n${delimiter}\n`;
 }

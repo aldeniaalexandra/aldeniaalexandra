@@ -5,7 +5,7 @@ await mkdir("dist", { recursive: true });
 
 await Promise.all([
   build({
-    entryPoints: ["src/cli.ts"],
+    entryPoints: ["src/cli-entry.ts"],
     outfile: "dist/cli.js",
     bundle: true,
     platform: "node",
@@ -15,7 +15,7 @@ await Promise.all([
     banner: { js: "#!/usr/bin/env node" },
   }),
   build({
-    entryPoints: ["src/action.ts"],
+    entryPoints: ["src/action-entry.ts"],
     outfile: "dist/action.js",
     bundle: true,
     platform: "node",

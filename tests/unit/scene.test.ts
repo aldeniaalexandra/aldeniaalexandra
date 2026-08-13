@@ -17,10 +17,12 @@ const EXPECTED_FRAME_HASHES = [
 
 let scene: Scene;
 let calendar: ContributionCalendar;
+let config: ResolvedConfig;
+let character: CharacterPack;
 
 beforeAll(async () => {
-  const config = await loadConfig("ube.config.json") as ResolvedConfig;
-  const character = await loadCharacter(config.characterPath) as CharacterPack;
+  config = await loadConfig("ube.config.json") as ResolvedConfig;
+  character = await loadCharacter(config.characterPath) as CharacterPack;
   const fixture = JSON.parse(
     await readFile("tests/fixtures/calendar.json", "utf8"),
   ) as { endDate: string; days: RawContributionDay[] };
@@ -55,5 +57,23 @@ describe("createScene", () => {
     );
 
     expect(hashes).toEqual(EXPECTED_FRAME_HASHES);
+  });
+
+  it("adapts the contribution grid to the smallest supported canvas", () => {
+    const compactScene = createScene(
+      {
+        ...config,
+        output: { ...config.output, width: 320, height: 160 },
+      },
+      character,
+    );
+    const frame = compactScene.render(calendar, 60);
+    const { gridLeft, gridTop, cellSize, cellGap } = compactScene.layout;
+
+    expect(frame).toMatchObject({ width: 320, height: 160 });
+    expect(gridLeft).toBeGreaterThanOrEqual(0);
+    expect(gridTop).toBeGreaterThanOrEqual(0);
+    expect(cellSize).toBeLessThan(10);
+    expect(cellGap).toBeGreaterThanOrEqual(1);
   });
 });

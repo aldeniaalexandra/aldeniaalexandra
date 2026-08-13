@@ -1,9 +1,11 @@
+import { randomUUID } from "node:crypto";
 import { mkdir, rename, rm, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { GIFEncoder } from "gifenc";
 import type { IndexedFrame } from "../render/scene.js";
 
 const GIF_MINIMUM_DELAY_MS = 10;
+const pendingWrites = new Map<string, Promise<void>>();
 
 export function encodeGif(
   frames: readonly IndexedFrame[],
@@ -39,8 +41,31 @@ export async function writeGifAtomic(
   outputPath: string,
   bytes: Uint8Array,
 ): Promise<void> {
-  const temporaryPath = `${outputPath}.tmp`;
-  await mkdir(dirname(outputPath), { recursive: true });
+  const previousWrite = pendingWrites.get(outputPath) ?? Promise.resolve();
+  const currentWrite = previousWrite
+    .catch(() => undefined)
+    .then(() => writeGifAtomicNow(outputPath, bytes));
+  pendingWrites.set(outputPath, currentWrite);
+
+  try {
+    await currentWrite;
+  } finally {
+    if (pendingWrites.get(outputPath) === currentWrite) {
+      pendingWrites.delete(outputPath);
+    }
+  }
+}
+
+async function writeGifAtomicNow(
+  outputPath: string,
+  bytes: Uint8Array,
+): Promise<void> {
+  const outputDirectory = dirname(outputPath);
+  const temporaryPath = join(
+    outputDirectory,
+    `.${basename(outputPath)}.${process.pid}.${randomUUID()}.tmp`,
+  );
+  await mkdir(outputDirectory, { recursive: true });
   try {
     await writeFile(temporaryPath, bytes);
     await rename(temporaryPath, outputPath);

@@ -1,5 +1,3 @@
-import { pathToFileURL } from "node:url";
-import { resolve } from "node:path";
 import { loadCharacter } from "./character/load.js";
 import { loadConfig } from "./config/load.js";
 import { generate } from "./generate.js";
@@ -86,9 +84,4 @@ function parseArguments(args: readonly string[]): ParsedArguments {
     ...(flags.has("--fixture") ? { fixturePath: flags.get("--fixture") as string } : {}),
     ...(flags.has("--output") ? { outputPath: flags.get("--output") as string } : {}),
   };
-}
-
-const entryPath = process.argv[1];
-if (entryPath !== undefined && import.meta.url === pathToFileURL(resolve(entryPath)).href) {
-  process.exitCode = await runCli(process.argv.slice(2));
 }

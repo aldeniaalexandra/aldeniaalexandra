@@ -1,4 +1,6 @@
-import { resolve } from "node:path";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadConfig } from "../../src/config/load.js";
 import { validateConfig } from "../../src/config/schema.js";
@@ -56,5 +58,25 @@ describe("loadConfig", () => {
     expect(loaded.outputPath).toBe(
       resolve(fixtureDirectory, "assets/ube.gif"),
     );
+  });
+
+  it("includes the config filename in schema errors", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "ube-invalid-config-"));
+    const configPath = join(directory, "ube.config.json");
+    await writeFile(
+      configPath,
+      JSON.stringify({
+        ...validConfig,
+        output: { ...validConfig.output, width: 0 },
+      }),
+    );
+
+    try {
+      await expect(loadConfig(configPath)).rejects.toThrow(
+        `${configPath}: output.width must be an integer between 320 and 1600`,
+      );
+    } finally {
+      await rm(directory, { force: true, recursive: true });
+    }
   });
 });
