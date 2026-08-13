@@ -12,7 +12,7 @@ import { createScene, type Scene } from "../../src/render/scene.js";
 const EXPECTED_FRAME_HASHES = [
   "2d3031623b50cb2ad308f5d007c9d5d378986e3a881c8bd129a284d503165279",
   "9515738829c10418f9addfd1be8dfdee7e1c800eec8cd4c32aec0d3ecebf9be8",
-  "e9d3b62c10ad9a3729ced4a7d753eddb350bba731b57773d95edc5332169189a",
+  "2d3031623b50cb2ad308f5d007c9d5d378986e3a881c8bd129a284d503165279",
 ];
 
 let scene: Scene;

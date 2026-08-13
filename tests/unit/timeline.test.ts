@@ -48,8 +48,9 @@ describe("sampleTimeline", () => {
     expect(sampleTimeline(82, options).blink).toBe(true);
   });
 
-  it("keeps the wake outside the graph until Ube reaches it", () => {
+  it("disables the wake while Ube is outside either graph edge", () => {
     expect(sampleTimeline(0, options).wakeColumn).toBe(-1);
-    expect(sampleTimeline(119, options).wakeColumn).toBe(52);
+    expect(sampleTimeline(60, options).wakeColumn).toBeGreaterThanOrEqual(0);
+    expect(sampleTimeline(119, options).wakeColumn).toBe(-1);
   });
 });

@@ -1484,10 +1484,12 @@ function sampleTimeline(frameIndex, options) {
 }
 function calculateWakeColumn(x, options) {
   const centerX = x + options.characterWidth / 2;
+  const gridRight = options.gridLeft + options.gridCellStep * options.gridColumns;
+  if (centerX < options.gridLeft || centerX >= gridRight) return -1;
   const relativeColumn = Math.floor(
     (centerX - options.gridLeft) / options.gridCellStep
   );
-  return Math.max(-1, Math.min(options.gridColumns - 1, relativeColumn));
+  return relativeColumn;
 }
 function validateOptions2(frameIndex, options) {
   if (!Number.isInteger(options.frameCount) || options.frameCount < 2) {
