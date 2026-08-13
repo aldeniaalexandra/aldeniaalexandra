@@ -8,13 +8,7 @@ on:
     branches: [main, master]
     paths:
       - ".github/workflows/ube.yml"
-      - "action.yml"
-      - "characters/**"
-      - "dist/**"
-      - "package-lock.json"
-      - "package.json"
-      - "scripts/**"
-      - "src/**"
+      - "characters/ube.json"
       - "ube.config.json"
 
 permissions:
@@ -28,7 +22,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Render contribution companion
-        uses: ./
+        uses: aldeniaalexandra/ube@main
         with:
           token: ${{ github.token }}
 

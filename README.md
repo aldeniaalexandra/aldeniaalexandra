@@ -1,151 +1,68 @@
 <div align="center">
 
-<img src="./assets/ube.gif" alt="Ube, a tiny purple pixel character walking across a GitHub contribution calendar" width="100%" />
+![Ube walking through my contribution year](assets/ube.gif)
 
 </div>
 
-# Ube
+i make things. some useful, some just because they looked fun.
 
-**Your contribution graph has a tiny resident.**
+---
 
-Ube turns the last 53 weeks of GitHub contributions into a looping pixel scene. The graph stays recognizable, while a small purple character walks above it with a four-frame gait, an occasional blink, and a soft trail of light.
+## Inventory
 
-The banner is generated inside GitHub Actions. You do not need to host a service or hand your data to another account.
+![Python](https://img.shields.io/badge/Python-2b2d42?style=flat-square&logo=python&logoColor=ffd43b)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2b2d42?style=flat-square&logo=tensorflow&logoColor=ff6f00)
+![Scikit-Learn](https://img.shields.io/badge/scikit--learn-2b2d42?style=flat-square&logo=scikitlearn&logoColor=f89939)
+![Pandas](https://img.shields.io/badge/Pandas-2b2d42?style=flat-square&logo=pandas&logoColor=ffffff)
+![NumPy](https://img.shields.io/badge/NumPy-2b2d42?style=flat-square&logo=numpy&logoColor=4dabcf)
+![FastAPI](https://img.shields.io/badge/FastAPI-2b2d42?style=flat-square&logo=fastapi&logoColor=05998b)
+![Docker](https://img.shields.io/badge/Docker-2b2d42?style=flat-square&logo=docker&logoColor=2496ed)
+![GCP](https://img.shields.io/badge/Google_Cloud-2b2d42?style=flat-square&logo=googlecloud&logoColor=4285f4)
+![Firebase](https://img.shields.io/badge/Firebase-2b2d42?style=flat-square&logo=firebase&logoColor=ffca28)
 
-## Put Ube on your profile
+---
 
-Copy [`ube.config.json`](./ube.config.json) and [`characters/ube.json`](./characters/ube.json) into your profile repository. Change `github.username`, then add this workflow:
+## Quest Log
 
-```yaml
-name: Refresh Ube
+Stuff I built when the mood hit — details live in each repo.
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "17 3 * * *"
+- **[Cognitus AI](https://github.com/aldeniaalexandra/data-analysis-chatbot)** — a chatbot that reads your CSV and talks back
+- **[RAG Resume Screener](https://github.com/aldeniaalexandra/rag-resume-screener)** — retrieval-augmented résumé ranking
+- **[Tomato Leaf Disease Detection](https://github.com/aldeniaalexandra/tomato-leaf-disease)** — snap a leaf, get a diagnosis
+- **[Telco Customer Churn](https://github.com/aldeniaalexandra/customer-churn-prediction)** — who's leaving, and why
 
-permissions:
-  contents: write
+---
 
-jobs:
-  render:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
+## Trophy Cabinet
 
-      - name: Render Ube
-        uses: aldeniaalexandra/aldeniaalexandra@main
-        with:
-          token: ${{ github.token }}
+<details>
+<summary><b>a few things from a past life poking at rocks and physics with ML</b></summary>
 
-      - name: Commit the banner
-        shell: bash
-        run: |
-          if git diff --quiet -- assets/ube.gif; then
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- assets/ube.gif
-          git commit -m "chore: refresh Ube banner"
-          git push
-```
+<br/>
 
-Add the generated file to your profile README:
+| Year | Type | Title | Where |
+|:--:|:--|:--|:--|
+| 2024 | paper | [Machine Learning for Physical Parameters of 3D Fractures](https://doi.org/10.3390/app142412037) | Applied Sciences · Q1 (MDPI) |
+| 2024 | paper | [2D Physical Parameters of Digital Rocks via Deep Learning](https://doi.org/10.1088/1402-4896/ad9d08) | Physica Scripta · Q1 (IOP) |
+| 2024 | paper | [Lattice Boltzmann + Image Processing for Digital Rock](https://doi.org/10.3390/app14177509) | Applied Sciences · Q1 (MDPI) |
+| 2023 | paper | [ML for 2D Fracture Properties Estimation](https://doi.org/10.25299/jgeet.2023.8.02-2.13874) | JGEET · Sinta 2 |
+| 2024 | patent | RophysiX | EC00202479885 |
+| 2024 | patent | Petra | EC00202462911 |
+| 2024 | patent | SiFrac-ML | EC00202462898 |
+| 2022 | patent | NeoFract | EC002022116119 |
 
-```markdown
-![Ube walking through my contribution year](assets/ube.gif)
-```
+</details>
 
-The example tracks `main` while Ube is in early development. Pin a release tag or commit when you want a fixed version.
+---
 
-## Configuration
+## Party Up
 
-```json
-{
-  "version": 1,
-  "github": {
-    "username": "aldeniaalexandra"
-  },
-  "character": "characters/ube.json",
-  "output": {
-    "path": "assets/ube.gif",
-    "width": 960,
-    "height": 320,
-    "fps": 12.5,
-    "durationSeconds": 9.6
-  },
-  "theme": {
-    "background": "#0d1117",
-    "gridEmpty": "#21262d",
-    "gridLevels": ["#0e4429", "#006d32", "#26a641", "#39d353"],
-    "accent": "#8a63e8"
-  }
-}
-```
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-2b2d42?style=flat-square&logo=linkedin&logoColor=0a66c2)](https://www.linkedin.com/in/aldeniaalexandra)
+[![GitHub](https://img.shields.io/badge/GitHub-2b2d42?style=flat-square&logo=github&logoColor=ffffff)](https://github.com/aldeniaalexandra)
+[![Email](https://img.shields.io/badge/Email-2b2d42?style=flat-square&logo=gmail&logoColor=ea4335)](mailto:aldnalexandr@gmail.com)
 
-Paths are resolved from the config file. Canvas sizes from 320 × 160 through 1600 × 800 are supported; the contribution grid scales down cleanly on narrower banners. Invalid colors, dimensions, frame counts, and unknown keys fail with a message that points to the config file and exact field.
+<br/>
 
-## Draw a different resident
-
-The character pack is plain JSON. It contains a palette and six 12 by 8 pixel frames: idle, blink, and four walking poses.
-
-```json
-{
-  "palette": {
-    "P": "#8A63E8",
-    "H": "#BFAAFF",
-    "S": "#6845C6",
-    "E": "#171225"
-  }
-}
-```
-
-Each visible letter paints one color. A space stays transparent. Edit the matrices in [`characters/ube.json`](./characters/ube.json) to change the silhouette or gait. The loader rejects uneven rows and undeclared symbols before rendering anything.
-
-## Run it locally
-
-Ube needs Node.js 20 or newer.
-
-```bash
-npm ci
-npm run typecheck
-npm test
-npm run build
-```
-
-Generate the deterministic demo banner without contacting GitHub:
-
-```bash
-node dist/cli.js generate \
-  --config ube.config.json \
-  --fixture tests/fixtures/calendar.json
-```
-
-For live data, set `GITHUB_TOKEN` and omit `--fixture`.
-
-## How it works
-
-```text
-GitHub GraphQL
-      ↓
-53 × 7 contribution calendar
-      ↓
-deterministic walk timeline
-      ↓
-indexed-pixel renderer
-      ↓
-looping GIF
-```
-
-The renderer, character format, Ube artwork, motion system, configuration schema, and GitHub adapter live in this repository. [`gifenc`](https://github.com/mattdesl/gifenc) is the only runtime image dependency. It serializes the indexed frames that Ube has already drawn.
-
-The same engine powers the CLI and the JavaScript Action. Fixture mode never touches the network, which keeps visual tests stable and makes every generated frame reproducible.
-
-## Privacy and permissions
-
-Ube requests contribution dates, counts, and intensity levels from GitHub GraphQL. It does not collect telemetry or store your token. The Action only writes the GIF; the workflow above decides whether to commit it.
-
-## License
-
-MIT. See [`LICENSE`](./LICENSE).
+<div align="center">
+<img src="https://komarev.com/ghpvc/?username=aldeniaalexandra&color=8a63e8&style=flat-square&label=players+met" />
+</div>
