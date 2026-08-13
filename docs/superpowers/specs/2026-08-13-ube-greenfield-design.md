@@ -194,4 +194,4 @@ It replaces them with Ube source, configs, workflow, generated output, tests, an
 - Ube's sprite and gait are original and defined only in the new character pack.
 - A reusable JavaScript Action generates a banner from GitHub contribution data.
 - The profile workflow refreshes the banner without any Awan reference or dependency.
-- Repository-wide search finds no remaining Awan product references in tracked files.
+- Repository-wide search finds no Awan references in product, runtime, workflow, asset, or README files. Historical design documents may name the removed dependency only to record the independence requirement.
