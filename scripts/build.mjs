@@ -12,6 +12,7 @@ await Promise.all([
     target: "node20",
     format: "esm",
     sourcemap: true,
+    sourcesContent: false,
     banner: { js: "#!/usr/bin/env node" },
   }),
   build({
@@ -22,5 +23,6 @@ await Promise.all([
     target: "node24",
     format: "esm",
     sourcemap: true,
+    sourcesContent: false,
   }),
 ]);
