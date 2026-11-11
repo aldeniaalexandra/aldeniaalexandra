@@ -22,6 +22,14 @@ i make things. some useful, some just because they looked fun.
 
 ---
 
+## The River
+
+A year of commits, drawn as a current — one koi per repo.
+
+<img src="nagare/nagare.svg" width="100%" alt="nagare" />
+
+---
+
 ## Quest Log
 
 Stuff I built when the mood hit — details live in each repo.
